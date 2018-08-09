@@ -6,8 +6,9 @@
 2. Certification Exam
 3. Working with Azure Storage Blobs and Files
    1. Storage Account
-   2. Code Sample
 4. Implementing Azure Storage Tables and Queues
+   1. Tables
+   2. Queues
 5. Azure Storage Access and Monitoring
 6. Deploying Azure SQL Databases
 7. Implementing Azure Cosmos DB
@@ -40,7 +41,7 @@ Blob -> Binary Large OBject.
 
 Storage accounts are accessible through standard HTTP. (http[s]://`storage_account_name`.blob.core.windows.net/`container_name`/`file_name`)  
 
-![Understanding Blob Storage](images/blob_storage.PNG)  
+![Understanding Blob Storage](images/blob-storage.PNG)  
 
 **Different types of blob storage:**
 
@@ -82,11 +83,41 @@ Storage accounts are accessible through standard HTTP. (http[s]://`storage_accou
 * Read-access geo-redundant storage (RA-GRS)  
    Three copies in one region and three copies in another. Read-access to both regions.
 
-### Code Sample
+**Code Sample:**
 
 [AzureBlobStorage.cs](code_samples/AzureBlobStorage.cs)
 
 ## Implementing Azure Storage Tables and Queues
+
+There's a limit to how much Tables and Queues can scale up, so it might be necessary to scale out instead and plan for that.
+
+### Tables
+
+Built for massive scale. Items doesn't have to share schema.  
+
+![Azure Table Storage](images/table-storage.PNG)
+
+PartitionKey and RowKey are two required properties, together they form the primary key. Items are partitioned after the PartitioenKey, so items sharing the same key, would end up on the same Storage Node.
+
+[OData Query Language](https://docs.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities)
+
+**Code Sample:**
+
+[AzureTableStorage.cs](code_samples/AzureTableStorage.cs)
+
+### Queues
+
+![Azure Queue Storage](images/queue-storage.PNG)  
+
+Default lifetime for messages in the queue is 7 days. When messages are being processed they become invisible to everybody else for 30 seconds, if the worker can't process the message within the 30 seconds, the message goes back on the queue -> called visibility timeout.
+
+Use `PeekMessage()` if you don't want to process it, but just look at it.
+
+Queue performance and scalability decreases as the message increases in size -> short messages == better performance!
+
+**Code Sample:**
+
+[AzureQueueStorage.cs](code_samples/AzureQueueStorage.cs)
 
 ## Azure Storage Access and Monitoring
 
