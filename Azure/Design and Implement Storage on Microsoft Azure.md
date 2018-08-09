@@ -121,6 +121,18 @@ Queue performance and scalability decreases as the message increases in size -> 
 
 ## Azure Storage Access and Monitoring
 
+You can generate a Shared Access Key, allowing only access to specific resource types (Blob, Table, Files, Queues). The Key is only valid between two datetimes that you specifiy, and you can also limit the key by IP address.
+
+You can have a maximum of 5 policies.
+
+Monitoring logs are stored in a folder called $logs -> not visible on portal.azure.com.
+
+You can configure CORS seperately for Blob, File, Table, and Queues.
+
+**Code Sample:**
+
+[StorageAccessAndMonitoring.cs](code_samples/StorageAccessAndMonitoring.cs)
+
 ## Deploying Azure SQL Databases
 
 ## Implementing Azure Cosmos DB
