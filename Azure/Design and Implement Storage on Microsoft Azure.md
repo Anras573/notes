@@ -213,3 +213,33 @@ You’ve enable logging for your storage account. You need to access the log fil
 
 You need to increase the number of DTUs available for your Azure SQL database. What should you do?
 > Scale up to a larger pricing tier.
+
+You need to support Windows authentication for SQL databases running in Azure. What should you do?
+> Deploy SQL Server on an Azure VM.
+
+You need to upload an image to a storage account. Which blob type should you use?
+> Block Blob.
+
+You’ve uploaded several images to a storage account container called “assets”. You want the path to those images to use a hierarchy of /assets/images. What should you do?
+> Set the prefix to each blob to "images".
+
+You need to insert an entity into an Azure storage table using a C# application. Which method should you call on the table client to perform this operation?
+> `Execute()`.
+
+You need to import data into Azure Search. Which of the following are valid options supported natively by the Import Data Wizard?
+> Azure SQL Database.
+
+Your team is new to Azure and needs to store JSON documents in Cosmos DB. Which resource should you create first?
+> Cosmos DB Account.
+
+Your company security policy requires that you use secure connectivity to communicate with cloud based applications. You need to implement Redis Cache. What should you do?
+> Deploy Azure Redis Cache with the default settings.
+
+You need to read the first message in an Azure storage queue without pulling the message off the queue. What should you do?
+> Use the Peek method.
+
+Shared Access Signature tokens are generated using which Azure Storage account resource?
+> Access Keys.
+
+You have a front-end web application that uses javascript to access blob content stored in your Azure storage account. The front-end web application runs on a server under another domain. What should you configure and enable in the settings of your storage account?
+> CORS.
