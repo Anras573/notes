@@ -152,6 +152,17 @@ You can run SQL Server in two ways on Azure
 
 ## Implementing Azure Cosmos DB
 
+Full managed NoSQL database. Document DB == Cosmos DB.  
+
+Supports a number of APIs:
+
+* DocumentDB
+* MongoDB
+* Table API
+* Graph (Gremlin) API
+
+Supports SQL queries.
+
 ## Working with Azure Redis Caching
 
 ## Implementing Azure Search
