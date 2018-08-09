@@ -135,6 +135,21 @@ You can configure CORS seperately for Blob, File, Table, and Queues.
 
 ## Deploying Azure SQL Databases
 
+You can run SQL Server in two ways on Azure
+
+* Azure SQL Database
+  * Cloud Database as a Service
+  * Fully managed
+  * Built-in scalability and redundance
+    Can enable Geo-replication -> Replicate your database across multiple regions (maximum of 4)
+  * Ideal for new cloud-based applications
+* SQL Server on Azure VM
+  * Highly compatible with on-premises SQL Server
+  * Ideal for scenarios where full server controll is required
+  * Requires more maintenance and administration
+
+[Azure SQL Database DTU Calculator](https://dtucalculator.azurewebsites.net)
+
 ## Implementing Azure Cosmos DB
 
 ## Working with Azure Redis Caching
