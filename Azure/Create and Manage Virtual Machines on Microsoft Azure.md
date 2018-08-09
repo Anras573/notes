@@ -38,7 +38,7 @@ First course in a learning path for the 70-532 certification exam.
 [Learning Path: Developing Azure Solutions (70-532)](https://www.microsoft.com/en-us/learning/exam-70-532.aspx)  
 This course counts for 20-25% of the exam as of 07/08/2018 (DD/mm/YYYY)  
 [Browse all of the certifications](https://www.microsoft.com/en-us/learning/browse-all-certifications.aspx)  
-[Get Hands-on Practice](https:/azure.microsoft.com/en-us/free/)  
+[Get Hands-on Practice](https://azure.microsoft.com/en-us/free/)  
 [Do the learning checks on PluralSight](https://app.pluralsight.com/library/courses/microsoft-azure-create-manage-virtual-machines/learning-check)  
 [Take the official practice test](https://www.microsoft.com/en-us/learning/exam-70-532.aspx#practice-test)
 
@@ -153,7 +153,7 @@ Set-AzureRmVmDscExtension -Version 2.21 `
 `Set-AzureRmVmDscExtension` installs the DSC agent on a virtual machine, tells the virtual machine to pull the configuration script and run it.
 
 ## Configure Azure Virtual Machine Networking
-![Azure Network Architecture](images/azure-network-architecture.png)  
+![Azure Network Architecture](images/azure-network-architecture.PNG)  
 Frontend subnet (_192.168.1.0/24_) allows connection from outside of the virtuel network, while the backend subnet (_192.168.2.0/24_) only allows connections from the frontend subnet. Default DNS server is provided by Azure.
 
 ### Network Security Groups
@@ -165,15 +165,15 @@ Remember to set the IP address to static otherwise it'll change, and your DNS re
 [User-defined Routes and IP Forwarding](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview)
 
 ## Scaling Azure Virtual Machines
-![Vertical Scalling](images/vertical-scale.png)
+![Vertical Scalling](images/vertical-scale.PNG)
 Vertical scaling -> upgrade hardware.
 
 With vertical scaling, Azure will shut down the VM and boot it up on the new hardware.  
 
-![Scale Out Horizontally](images/scale-out.png)  
+![Scale Out Horizontally](images/scale-out.PNG)  
 _The scale out rule shown is just an example._
 
-![Vertical Scalling](images/scale-in.png)  
+![Vertical Scalling](images/scale-in.PNG)  
 _The scale in rule shown is just an example._
 
 ### Scale Sets
