@@ -165,6 +165,21 @@ Supports SQL queries.
 
 ## Working with Azure Redis Caching
 
+Managed version of the open source Redis Cache.
+
+![Azure Redis Cache Overview](images/azure-redis-cache.PNG)
+
+You can only scale within the tier.
+
+Data Persistence:
+
+* RDB  
+  Redit Database binay format.
+* AOF  
+  Append only (every second)
+
+[Redis Cache How-to Tutorial](https://docs.microsoft.com/en-us/azure/redis-cache/cache-web-app-howto)
+
 ## Implementing Azure Search
 
 ## Learning Checks
