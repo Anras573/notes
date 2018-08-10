@@ -9,7 +9,13 @@
    2. Protocols
    3. Demo Application
    4. Microsoft Graph API
-4. Azure Key vault
+4. Azure Key Vault
+   1. Adding Keys and Secrets
+      1. Keys
+      2. Secret
+   2. Key Vault Limits
+   3. Audit Logging
+   4. Key Rotation
 5. Messaging Services
 6. Azure AD B2B and B2C
 
@@ -75,7 +81,80 @@ Support for multiple Client Libraries using ADAL, and Server Libraries using OWI
 
 Suports OData Query Language.
 
-## Azure Key vault
+## Azure Key Vault
+
+[Key Vault](https://azure.microsoft.com/en-us/services/key-vault)
+
+Store keys and other secrets used by cloud apps and services. Premium pricing tier supper HSM keys (Hadware Support Module).
+
+**Supports Advanced Access Policy:**
+
+* Enable access to Azure Virtual Machines for deployment
+* Enable access to Azure Resource Manager for template deployment
+* Enable access to Azure Disk Encryption for volume encryption
+
+### Adding Keys and Secrets
+
+You can set an activation and an expiration date. You can enable and disable keys and secrets.
+
+You can use the Cloud Shell to see the password of the secret.
+
+#### Keys
+
+When creating a key, you have three options:
+
+* Generate  
+  Let the key vault automatic generate a key for you
+* Upload  
+  Upload an key already generated somewhere else
+* Restore backup  
+  Restore keys from an earlier backup.
+
+**2 key types:**
+
+* Software key
+* HSM protected key (only available in the premium tier)
+
+#### Secrets
+
+When creating a new secret, you have to options:
+
+* Upload certificate
+* Manual
+
+### Managed Service Identity
+
+Enabling managed Identity on a virtual machine install the ManagedIdentityExtension on the VM.
+
+**Code Sample:**  
+[Accessing Secrets Using a Managed Service Identity (MSI)](code_samples/AzureKeyVault.cs)
+
+### Key Vault Limits
+
+[Key Vault Limits](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-service-limits)
+
+### Audit Logging
+
+To turn on Audit logging, you must turn on diagnostics.
+
+### Key Rotation
+
+**PowerShell Script:**
+
+```PowerShell
+$resourceGroup = 'Security'
+$storageAccountName = 'myauditlogs'
+
+New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup -Name $storageAccountName -KeyName key1
+
+$newKey = (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroup).value[0]
+
+$secretValue = ConvertTo-SecureString $newKey -AsPlainText -Force
+
+Set-AzureKeyVaultSecret -VaultName MyVault -Name StorageKey1 -SecretValue $secretValue
+```
+
+[Key Rotation Using Azure Automation](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-key-rotation-log-monitoring)
 
 ## Messaging Services
 
