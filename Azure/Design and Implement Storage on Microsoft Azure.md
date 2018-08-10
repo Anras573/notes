@@ -182,6 +182,14 @@ Data Persistence:
 
 ## Implementing Azure Search
 
+![Azure Search Overview](images/azure-search.PNG)  
+[OData Expression Syntax for Azure Search](https://docs.microsoft.com/en-us/rest/api/searchservice/odata-expression-syntax-for-azure-search)  
+
+Use an Indexer to pull data in for indexing. All data is JSON.
+
+**Code Sample:**  
+[Azure Search](code_samples/AzureSearch.cs)
+
 ## Learning Checks
 
 What type of database service is provided by Cosmos DB?
@@ -243,3 +251,33 @@ Shared Access Signature tokens are generated using which Azure Storage account r
 
 You have a front-end web application that uses javascript to access blob content stored in your Azure storage account. The front-end web application runs on a server under another domain. What should you configure and enable in the settings of your storage account?
 > CORS.
+
+You need to migrate an on-premises SQL database to Azure SQL. How can you do this with the least amount of steps?
+> Use SQL Management Studio to migrate the database to Azure.
+
+You need to asynchronously copy an existing blob to a new block blob using a C# application. What method should you call on the blob reference object to initiate the copy operation?
+> `BeginStratCopy()`.
+
+One of your applications has a container within a storage account that hosts images for a web application. You need to allow public read access to blobs only. What access type should you set on the container?
+> Blob.
+
+Your team needs to store JSON documents in Cosmos DB. Which resource should you create first?
+> Database.
+
+You need to use shards to scale your Azure Redis Cache across multiple Redis nodes. Which pricing tier should you use for Azure Redis Cache?
+> Premium.
+
+Which two properties need to be set on each entity stored in an Azure storage table?
+> PartitionKey and RowKey.
+
+You have a queue client that has dequeued a message for processing. What is the default time the client has to process the message before it will become visible again within the queue?
+> 30 seconds.
+
+You're building an application that uses Azure Search. You've already built an index and have imported data into the service. You want to test the results of the Azure Search service with the least amount of effort. What should you do?
+> Use the Search Explorer in the Azure Portal.
+
+You need to create a SAS token on the fly inside your C# application. Which class should you use to generate this?
+> `SharedAccessAccountPolicy`.
+
+You need to generate a SAS token using an existing Stored Access Policy set on a blob container. Which method should you call on the container?
+> `GetSharedAccessSignature()`.
