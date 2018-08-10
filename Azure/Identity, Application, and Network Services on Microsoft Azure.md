@@ -5,6 +5,10 @@
 1. Overview
 2. Certification Exam
 3. Azure Active Directory
+   1. Basic of Authentication in Azure AD
+   2. Protocols
+   3. Demo Application
+   4. Microsoft Graph API
 4. Azure Key vault
 5. Messaging Services
 6. Azure AD B2B and B2C
@@ -28,6 +32,48 @@ This course counts for 10-15% of the exam as of 07/08/2018 (DD/mm/YYYY)
 [Microsoft Cloud Essentials](https://www.microsoft.com/en-us/cloudessentials)
 
 ## Azure Active Directory
+
+[Overview of Azure AD](https://azure.microsoft.com/en-us/develop/identity/signin)  
+
+Azure AD is an web-based Identity Service and is different from on-premise AD.
+
+### Basic of Authentication in Azure AD
+
+Identity as a Service.
+
+![Basic of Authentication in Azure Active Directory](images/basics_of_auth_in_aad.png)  
+[Authentication scenarios for Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)  
+
+Support for multiple Client Libraries using ADAL, and Server Libraries using OWIN. New version of Client Libraries using MSAL (also works with Microsoft Accounts).
+
+### Protocols
+
+* Browser based authentication
+  * WS Federation
+  * SAML-P 2.0
+* Not browser based
+  * Oauth 2.0
+  * OpenID Connect
+
+**Authentication Scenarios for Azure AD:**
+
+* Browser Based
+  * Web Browser to Web Application
+* Not Browser Based
+  * Single Page Application (SPA)
+  * Native Application to Wb API
+  * Web Application to Web API
+  * Service Application to Web API
+
+### Demo Application
+
+[Web App WS Federation .NET](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)
+
+### Microsoft Graph API
+
+[Microsoft graph API](https://developer.microsoft.com/en-us/graph/docs/concepts/overview)  
+
+Suports OData Query Language.
 
 ## Azure Key vault
 
