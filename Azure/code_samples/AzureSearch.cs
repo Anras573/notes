@@ -10,7 +10,7 @@ namespace AzureSearchWeb.Controllers
         public ActionResult Index()
         {
             var searchServiceName = "anbora";
-            var apiKey = "ECBCD81AB8551C4B2884C40276C3D913";
+            var apiKey = "<API Key>";
 
             var searchClient = new SearchServiceClient(searchServiceName, new SearchCredentials(apiKey));
             var indexClient = searchClient.Indexes.GetClient("aw-index");

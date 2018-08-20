@@ -17,6 +17,10 @@
    3. Audit Logging
    4. Key Rotation
 5. Messaging Services
+   1. Azure Event Hubs
+   2. Azure Notification Hubs
+   3. Azure IOT Service
+   4. Azure Stream Analytics
 6. Azure AD B2B and B2C
 
 ## Overview
@@ -158,4 +162,56 @@ Set-AzureKeyVaultSecret -VaultName MyVault -Name StorageKey1 -SecretValue $secre
 
 ## Messaging Services
 
+* Service bus Messaging  
+  Relay is the only one with bi-directional communication
+* Event and Notification Hubs
+* Azure IOT Hubs
+
+Service Bus == cloud messaging as a service.
+
+Service bus queues supports duplicate detection, message expiration queues (a specific queue for expired mesages), sessions (First in First Out).
+
+Topics can have multiple subscriptions, and queues are just containers for your messages.
+
+**Code Sample:**  
+[Sending and Receiving Messages](code_samples/ServiceBusTopic.cs)
+
+### Azure Event Hubs
+
+* Behavior tracking in mobile apps
+* Traffic information from web farms
+* In-game event capture in console games
+* Telemetry collected from other internet connected devices (industrial machines, vehicles, etc.)
+
+![Azure Event Hubs](images/azure-event-hubs.PNG)  
+[Azure Event Hubs Overview](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-about)
+
+Event Producers (Different applications running on different devices) -> Azure Event hub -> Stream data -> Long term storage -> Presentation
+
+### Azure Notification Hubs
+
+Sending push notification to any platform from any back end.
+
+![Notification Hub Diagram](images/notification-hub-diagram.png)  
+[Azure Notification Hubs Overview](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-push-notification-overview)
+
+### Azure IOT Hub Service
+
+* Secure bi-directional communication
+* Per-device authentication
+* Per-device secure connectivity
+* Message routing
+* Device monitoring
+* Extensive device SDKs
+
+### Azure Stream Analytics
+
+* Not only for IOT
+
+![Azure Stream Analytics](images/stream_analytics_intro_pipeline.png)  
+[Azure Stream Analytics Overview](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-introduction)
+
 ## Azure AD B2B and B2C
+
+[Azure AD B2B Collaboration](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  
+[Azure B2C Example Code](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi)
