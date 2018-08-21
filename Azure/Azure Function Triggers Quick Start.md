@@ -1,6 +1,7 @@
 # Azure Function Triggers Quick Start
 
 ## Content
+
 1. Manual Triggers and Azure Queue Storage Triggers
 2. Blob Triggers and Timer Triggers
 3. HTTP Triggers
@@ -19,6 +20,7 @@
 ## Service Bus Triggers and Event Hub Triggers
 
 ## Learning Check
+
 How do you reference the pre-supplied Json.NET assembly?
 > #r "Newtonsoft.Json"
 

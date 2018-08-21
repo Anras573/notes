@@ -1,6 +1,7 @@
 # Create and Manage Virtual Machines on Microsoft Azure
 
 ## Content
+
 1. Overview
 2. Certification Exam
 3. Deploying Azure Virtual Machines
@@ -26,7 +27,9 @@
 10. Learning Checks
 
 ## Overview
+
 First course in a learning path for the 70-532 certification exam.
+
 * Create Windows and Linux servers
 * Configuration management
 * Virtual networking in Azure
@@ -35,6 +38,7 @@ First course in a learning path for the 70-532 certification exam.
 * Build a load balanced web application
 
 ## Certification Exam
+
 [Learning Path: Developing Azure Solutions (70-532)](https://www.microsoft.com/en-us/learning/exam-70-532.aspx)  
 This course counts for 20-25% of the exam as of 07/08/2018 (DD/mm/YYYY)  
 [Browse all of the certifications](https://www.microsoft.com/en-us/learning/browse-all-certifications.aspx)  
@@ -43,11 +47,13 @@ This course counts for 20-25% of the exam as of 07/08/2018 (DD/mm/YYYY)
 [Take the official practice test](https://www.microsoft.com/en-us/learning/exam-70-532.aspx#practice-test)
 
 ## Deploying Azure Virtual Machines
+
 ![Single VM Instance](images/single-vm-diagram.png)  
 [Azure Virtual Machine Architecture](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/windows-vm)  
 [Azure portal](https://portal.azure.com)
 
 ### Deploy Virtual Machines
+
 Virtual machine images are placed under compute in the marketplace.  
 You can save up to 40% of the compute cost if you already own a Windows Server license and its covered by an active software assurance agreement.
 
@@ -57,12 +63,13 @@ When creating a new managed disk for a virtual machine, you can based it of a sn
 Shutting down the VM allows for changing the harddrive of the OS. -> If you want to deallocate the virtual machine, and not pay for it when its closed, you'll have to go through Azure and press the stop button on the overview of the VM.  
 
 You can change a disks host caching to either read/write, read-only, or none.
+
 * Read/Write  
-   OS disks
+  OS disks
 * Read-only  
-   SQL Server disks
+  SQL Server disks
 * None  
-   Log files
+  Log files
 
 [Sizes for Windows virtual machines in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)  
 All of the sizes with an S supports SSDs. Best practice is to use an SSD.  
@@ -70,46 +77,53 @@ All of the sizes with an S supports SSDs. Best practice is to use an SSD.
 [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator)
 
 #### Not Supported in VMs
+
 [Micorsoft Server Software Support for Microsoft Azure Virtual Machines](https://www.support.microsoft.com/en-us/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)  
+
 * Microsoft Azure virtual machines
-   * Dynamic Host Configuration Protocol Server
-   * Hyper-V (Hyper-V role is supported in Azure Ev3, and Dv3 series VMs only)
-   * Rights Management Services
-   * Windows Deployment Services
+  * Dynamic Host Configuration Protocol Server
+  * Hyper-V (Hyper-V role is supported in Azure Ev3, and Dv3 series VMs only)
+  * Rights Management Services
+  * Windows Deployment Services
 * Windows Server Features
-   * BitLocker Drive Encryption (on the operating system hard disk, may be used on data disks)
-   * Internet Storage Name Server
-   * Multipath I/O
-   * Network Load Balancing
-   * Peer Name Resolution Protocol
-   * RRAS
-   * DirectAccess
-   * SNMP Services
-   * Storage Manager for SANs
-   * Windows Internet Name Service
-   * Wireless LAN Service
+  * BitLocker Drive Encryption (on the operating system hard disk, may be used on data disks)
+  * Internet Storage Name Server
+  * Multipath I/O
+  * Network Load Balancing
+  * Peer Name Resolution Protocol
+  * RRAS
+  * DirectAccess
+  * SNMP Services
+  * Storage Manager for SANs
+  * Windows Internet Name Service
+  * Wireless LAN Service
 
 ### Storage Accounts
+
 Storage account have a unique public available domain name, that lives under core.windows.net. Adheres to DNS standards.  
 2 kinds of storage accounts:
+
 1. General purpose storage account  
-   Provides storage for blobs, files, tables, and queues.
+  Provides storage for blobs, files, tables, and queues.
 2. Blob storage accounts  
-   Specialized for storing blob data.  
+  Specialized for storing blob data.  
 
 Premium performance allows for SSD.  
 A VHD that are connected to virtual machines are of blob type page blob.
 
 ## Configuration Management, Automation, and Debugging
+
 [Azure CLI 2.0 (cross platform)](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)  
 The Azure CLI also exists in the online platform.  
 [jmespath query language](http://jmespath.org) Used to query the JSON response from the Azure CLI.  
 [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps)
 
 ### VM Agent and Configuration Management
+
 A VM Agent is supplied automatically when you create the virtual machine.
 
 3 different Configuration Management extensions are supported
+
 * PowerShell DSC
 * Puppet
 * Chef
@@ -117,19 +131,21 @@ A VM Agent is supplied automatically when you create the virtual machine.
 The Install Extension lets you apply your own script.
 
 #### Getting Started with PowerShell DSC
+
 1. Author configuration script  
-   WindowsWebServer.ps1
+  WindowsWebServer.ps1
 2. Compile to MOF (Managed Object Format)  
-   Server1.mof
+  Server1.mof
 3. Push/Pull to Target Node  
-   Server1
+  Server1
 4. Apply Desired Configuration  
-   Server1
+  Server1
 
 Native support for DSC in Windows Server 2012 R2 and higher.  
 Use `Get-DscResource` for a list of properties available for a specific resource ie. WindowsFeature.
 
 Two important commands.
+
 ```powershell
 $resourceGroup = 'Servers'
 $location = 'westus2'
@@ -153,10 +169,12 @@ Set-AzureRmVmDscExtension -Version 2.21 `
 `Set-AzureRmVmDscExtension` installs the DSC agent on a virtual machine, tells the virtual machine to pull the configuration script and run it.
 
 ## Configure Azure Virtual Machine Networking
+
 ![Azure Network Architecture](images/azure-network-architecture.PNG)  
 Frontend subnet (_192.168.1.0/24_) allows connection from outside of the virtuel network, while the backend subnet (_192.168.2.0/24_) only allows connections from the frontend subnet. Default DNS server is provided by Azure.
 
 ### Network Security Groups
+
 Network Security Groups can be assigned at the Network Interface level (on the VMs), or on the Subnet level of the network.  
 If you want your VM to inherit the Network Security Group of the Virtual Network, you'll have to manually specify that at the creation of the VM by setting the Network Security Group to None.  
 
@@ -165,6 +183,7 @@ Remember to set the IP address to static otherwise it'll change, and your DNS re
 [User-defined Routes and IP Forwarding](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview)
 
 ## Scaling Azure Virtual Machines
+
 ![Vertical Scalling](images/vertical-scale.PNG)
 Vertical scaling -> upgrade hardware.
 
@@ -177,6 +196,7 @@ _The scale out rule shown is just an example._
 _The scale in rule shown is just an example._
 
 ### Scale Sets
+
 A Scale Set normally belongs to one Placement Group, but can be expanded to multiple Placement Groups. One Placement Groups supports 100 VMS, and a Scale Set can support up to a 1000 VMs.
 
 > You can change a scale set from supporting a single placement group only (the default behavior) to a supporting multiple placement groups, but you cannot convert the other way around. Therefore make sure you understand the properties of large scale sets before converting.  
@@ -184,6 +204,7 @@ A Scale Set normally belongs to one Placement Group, but can be expanded to mult
 A Scale Set allow for either manual or auto-scale.
 
 ## Monitoring Azure Virtual Machines
+
 Boot diagnostics captures serial console output and screenshots of the vrtual machine on a host to help diagnose startup issues.  
 
 Host Metrics are what the HyperVisor can see about the VM from the outside.  
@@ -197,6 +218,7 @@ The Activity Log logs platform events, like the creation of the VM or a reboot.
 You can add Alert Rules for Metric alerts (both host and guest OS) and Activity alerts. Alert rules supports WebHooks that you can route alerts to.
 
 ## Working with Azure DevTest Labs
+
 * Worry-free Self-service
 * Pro-provisioned environments
 * Lab infrastructure as code
@@ -205,29 +227,34 @@ You can add Alert Rules for Metric alerts (both host and guest OS) and Activity 
 Each resource created in a DevTest Lab will inherit the tags of the DevTest Lab.
 
 ### Policies
+
 You can configure what size of VM is allowed to be deployed in the DevTest Lab. You can also limit how many VM, or VMs with SSDs, a user can have running. You can also limit based on per lab instead of per user.  
 
 You can enable the use of Auto-Start for VMs.
 
 ### Custom Images and Formulas
+
 Creating a custom image renders the original VM useless.  
 
 Formulas allow a user to quickly setup a new VM based on an image and a set of configurations.
 
 ## Building a Highly Available Application
+
 Application Gateways are Load Balancers optimized for Web Apps.  
 
 ### Available Sets
+
 * Fault Domains (FD)  
-   Server Racks -> a group of VMs that share the same power source and network switch.
-*  Update Domains (UD)  
-   For planned maintenance -> Multiple VMs on the same hardware.
+  Server Racks -> a group of VMs that share the same power source and network switch.
+* Update Domains (UD)  
+  For planned maintenance -> Multiple VMs on the same hardware.
 
 Its normal to use different Availability Sets for different tiers. F.x. one for the Web App tier and one for the Data tier.  
 
 Combine Availability Sets with Azure load Balancer.
 
 ### Load Balancer
+
 When using a Load Balancer, the VMs shouldn't have a public IP Address.  
 
 Its best practice to connect a Load Balancerr to an Availability Set instead of a VM.  
@@ -237,6 +264,7 @@ The Azure Load Balancer is a Network 4 Load Balancer, meaning it can load balanc
 Floating IP / direct server return -> used for SQL AlwaysOn Availability Group Listener.  
 
 ### Azure Application Gateway
+
 * Web Application Firewall
 * Cookie-based Session Affinity
 * SSL Offload
@@ -247,10 +275,12 @@ Floating IP / direct server return -> used for SQL AlwaysOn Availability Group L
 Needs to reside in its own subnet.
 
 ### Architecture for an N-tier Application
+
 ![Architecture for an N-tier Application](images/n-tier-sql-server.png)  
 [Architecture for an N-tier Application](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
 
 ## Learning Checks
+
 You need to deploy a new Windows-based virtual machine in Azure. Which type of storage configuration should you select as a best practice?
 > Managed disks.
 
